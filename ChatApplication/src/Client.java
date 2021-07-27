@@ -7,6 +7,9 @@ import java.util.Scanner;
 public class Client {
 	
 	private static Scanner scanner = new Scanner(System.in);
+	public static void print() {
+		System.out.println("Hello");
+	}
 
 	public static void main(String[] args) {
 		try (Socket socket = new Socket("127.0.0.1", 8888);
@@ -15,6 +18,7 @@ public class Client {
 			
 			ClientMessageReceiver messageReceiver = new ClientMessageReceiver(dis);
 			new Thread(messageReceiver).start();
+			print();
 			String input = null;
 			do {
 				input = scanner.nextLine();
